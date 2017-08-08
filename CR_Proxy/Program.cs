@@ -13,11 +13,10 @@ namespace CR_Proxy
         static void Main(string[] args)
         {
             Console.Title = "CR Proxy";
-            //ConnectToCRServer();
-            ConnectToCRServerWithDns();
+            ConnectToCRServer();
         }
 
-        private static void ConnectToCRServerWithDns()
+        private static void ConnectToCRServer()
         {
             try
             {
@@ -50,32 +49,6 @@ namespace CR_Proxy
 
         }
 
-        private static void ConnectToCRServer()
-        {
-            try
-            {
-                Socket sck = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sck.Connect("localhost", 9339);
-                for (int i = 1; i > 0; i--)
-                {
-                    if (sck.Connected)
-                    {
-                        Console.WriteLine("Connected!");
-                    }
-                }
-                while (!sck.Connected)
-                {
-                    Console.WriteLine("Disonnected!");
-                    Console.Read();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Connection failed");
-                Console.WriteLine(e.ToString());
-                Console.Read();
-            }
-        }
         public static void SendData(Socket socket, List<byte> input)
         {
             byte[] key = "AC30DCBEA27E213407519BC05BE8E9D930E63F873858479946C144895FA3A26B".HexToByteArray();
