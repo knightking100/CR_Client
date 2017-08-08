@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CR_Proxy
+namespace CR_Client
 {
     public static class Writer
 {
