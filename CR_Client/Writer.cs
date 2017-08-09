@@ -11,8 +11,12 @@ namespace CR_Client
     {
         _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse());
     }
+        public static void AddLong(this List<byte> _Packet, long _Value)
+        {
+            _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse());
+        }
 
-    public static void AddString(this List<byte> _Packet, string _Value)
+        public static void AddString(this List<byte> _Packet, string _Value)
     {
         if (_Value == null)
         {

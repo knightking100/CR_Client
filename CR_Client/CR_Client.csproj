@@ -47,6 +47,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EMsg.cs" />
+    <Compile Include="Messages\Client\ClientHello.cs" />
+    <Compile Include="Cryptography\Crypto.cs" />
+    <Compile Include="Cryptography\Key.cs" />
+    <Compile Include="Library\Blake2b\Blake2BBase.cs" />
+    <Compile Include="Library\Blake2b\Blake2BBuilder.cs" />
+    <Compile Include="Library\Blake2b\Blake2BConfig.cs" />
+    <Compile Include="Library\Blake2b\Blake2BCore-FullyUnrolled.cs" />
+    <Compile Include="Library\Blake2b\Blake2BCore.cs" />
+    <Compile Include="Library\Blake2b\Blake2BHasher.cs" />
+    <Compile Include="Library\Blake2b\Blake2BTreeConfig.cs" />
+    <Compile Include="Library\CustomNaCl\CustomNaCl.cs" />
+    <Compile Include="Library\CustomNaCl\KeyPair.cs" />
+    <Compile Include="Library\CustomNaCl\PublicBox.cs" />
+    <Compile Include="Library\CustomNaCl\SecretBox.cs" />
+    <Compile Include="Library\LZMA\Common\CommandLineParser.cs" />
+    <Compile Include="Library\LZMA\Common\CRC.cs" />
+    <Compile Include="Library\LZMA\Common\InBuffer.cs" />
+    <Compile Include="Library\LZMA\Common\OutBuffer.cs" />
+    <Compile Include="Library\LZMA\Compress\LzmaAlone\LzmaAlone.cs" />
+    <Compile Include="Library\LZMA\Compress\LzmaAlone\LzmaBench.cs" />
+    <Compile Include="Library\LZMA\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="Library\LZMA\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="Library\LZMA\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="Library\LZMA\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="Library\LZMA\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="Library\LZMA\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="Library\LZMA\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="Library\LZMA\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="Library\LZMA\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="Library\LZMA\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="Library\LZMA\ICoder.cs" />
+    <Compile Include="Library\Sodium\KeyPair.cs" />
+    <Compile Include="Library\Sodium\KeyPairBL.cs" />
+    <Compile Include="Library\Sodium\PublicBox.cs" />
+    <Compile Include="Library\Sodium\SecretBox.cs" />
+    <Compile Include="Library\Sodium\Sodium.cs" />
+    <Compile Include="Library\TweetNaCl\curve25519.cs" />
+    <Compile Include="Library\TweetNaCl\curve25519xsalsa20poly1305.cs" />
+    <Compile Include="Library\TweetNaCl\hsalsa20.cs" />
+    <Compile Include="Library\TweetNaCl\poly1305.cs" />
+    <Compile Include="Library\TweetNaCl\salsa20.cs" />
+    <Compile Include="Library\TweetNaCl\verify_16.cs" />
+    <Compile Include="Library\TweetNaCl\xsalsa20.cs" />
+    <Compile Include="Library\TweetNaCl\xsalsa20poly1305.cs" />
+    <Compile Include="Library\ZLib\CRC32.cs" />
+    <Compile Include="Library\ZLib\Deflate.cs" />
+    <Compile Include="Library\ZLib\DeflateStream.cs" />
+    <Compile Include="Library\ZLib\GZipStream.cs" />
+    <Compile Include="Library\ZLib\Inflate.cs" />
+    <Compile Include="Library\ZLib\InfTree.cs" />
+    <Compile Include="Library\ZLib\Iso8859Dash1Encoding.cs" />
+    <Compile Include="Library\ZLib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="Library\ZLib\Tree.cs" />
+    <Compile Include="Library\ZLib\Zlib.cs" />
+    <Compile Include="Library\ZLib\ZlibBaseStream.cs" />
+    <Compile Include="Library\ZLib\ZlibCodec.cs" />
+    <Compile Include="Library\ZLib\ZlibConstants.cs" />
+    <Compile Include="Library\ZLib\ZlibStream.cs" />
+    <Compile Include="Messages\Client\ClientLogin.cs" />
+    <Compile Include="PacketSender\ClientHelloSender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
@@ -56,6 +117,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
