@@ -1,13 +1,4 @@
-﻿using CR_Client.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sodium;
-using CR_Client.Library.Sodium;
-using CR_Client.Library.CustomNaCl;
-using CR_Client.Others;
+﻿using System.Collections.Generic;
 
 namespace CR_Client.Packets.Messages.Client
 {

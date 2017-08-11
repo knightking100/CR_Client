@@ -1,5 +1,4 @@
-﻿using System;
-using Sodium;
+﻿using Sodium;
 
 namespace CR_Client.Packets.Cryptography
 {

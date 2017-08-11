@@ -1,15 +1,7 @@
 ﻿using CR_Client.Enums;
 using CR_Client.Packets.Messages.Client;
-using CR_Client;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using CR_Client.Cryptography;
-using Newtonsoft.Json;
-using CR_Client.Packets.Cryptography;
 
 namespace CR_Client.PacketSender
 {
