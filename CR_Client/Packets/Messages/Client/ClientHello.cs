@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CR_Client.Messages.Client
+namespace CR_Client.Packets.Messages.Client
 {
     public class ClientHello
     {
@@ -21,7 +21,7 @@ namespace CR_Client.Messages.Client
             Packet.AddInt(majorVersion);
             Packet.AddInt(minorVersion);
             Packet.AddInt(build);
-            Packet.AddString("9e5bf715eec4b3a9706515c21f7b519713b2d906");
+            Packet.AddString(contentHash);
             Packet.AddInt(deviceType);
             Packet.AddInt(appStore);
             return Packet;

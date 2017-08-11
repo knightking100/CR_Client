@@ -10,7 +10,7 @@ namespace CR_Client.Enums
     {
     //Client Messages
     ClientHello =  10100,
-    Login =  10101,
+    ClientLogin =  10101,
     ClientCapabilities =  10107,
     KeepAlive =  10108,
     AuthenticationCheck =  10112,

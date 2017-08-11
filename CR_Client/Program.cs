@@ -1,10 +1,12 @@
-﻿using CR_Client.Messages.Client;
+﻿using CR_Client.Packets.Messages.Client;
 using CR_Client.Enums;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using CR_Client.PacketSender;
+using CR_Client.Packets.Messages.Server;
+using System.Text;
 
 namespace CR_Client
 {
@@ -35,11 +37,11 @@ namespace CR_Client
                     {
                         Console.WriteLine("Connected!");
                         ClientHelloSender.SendClientHello(sck);
-                        Console.WriteLine($"Successfully sent.{Emsg.ClientHello}");
+                        Console.WriteLine($"Successfully sent {Emsg.ClientHello}.");
+                        Console.WriteLine($"Session key: {ServerHelloReceiver.ReceivePacket(sck)}");
+                        ClientLoginSender.SendClientLogin(sck);
+                        Console.WriteLine($"Successfully sent {Emsg.ClientLogin}.");
                         Console.WriteLine("");
-                        //Reader _Reader = new Reader(ReceiveSync().ToArray());
-                        //string response = _Reader.ReadString();
-                        //Console.WriteLine($"Response from server {response}");
                         string consoleInput = Console.ReadLine();
                         if (consoleInput == "connect")
                         {
@@ -54,14 +56,30 @@ namespace CR_Client
                 while (!sck.Connected)
                 {
                     Console.WriteLine("Disonnected!");
-                    Console.Read();
+                    string consoleInput = Console.ReadLine();
+                    if (consoleInput == "connect")
+                    {
+                        ConnectToCRServer();
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Connection failed");
                 Console.WriteLine(e.ToString());
-                Console.Read();
+                string consoleInput = Console.ReadLine();
+                if (consoleInput == "connect")
+                {
+                    ConnectToCRServer();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
             }
         }
     }
