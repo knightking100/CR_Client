@@ -27,8 +27,8 @@ namespace CR_Client
                 Socket sck = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPAddress[] IP = Dns.GetHostAddresses("game.clashroyaleapp.com");;
                 IPAddress ip = IPAddress.Parse("192.168.0.101");
-                sck.Connect(IP[0], 9339);
-                Console.WriteLine($"IP is: {IP[0]}");
+                sck.Connect(ip, 9339);
+                Console.WriteLine($"Connected IP is: {ip}");
                 for (int i = 1; i > 0; i--)
                 {
                     if (sck.Connected)

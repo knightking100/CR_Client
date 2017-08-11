@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Blake2s, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\blake2s-net.0.1.0\lib\net\Blake2s.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
@@ -130,8 +127,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packets\Cryptography\Others\Blake2\Blake2B.cs" />
-    <Compile Include="Packets\Cryptography\Others\Blake2\Blake2B.FullyUnrolled.cs" />
+    <Compile Include="Packets\Cryptography\KeyPairGenerator.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2B.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BConfig.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BCore-FullyUnrolled.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BCore-Inline.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BCore-Simple.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BCore.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BHasher.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BNodeHasher.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2BTreeConfig.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Blake2IvBuilder.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\Hasher.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\NodeHasher.cs" />
+    <Compile Include="Packets\Cryptography\Others\Blake2b\TreeHasher.cs" />
     <Compile Include="Packets\Cryptography\Others\curve25519.cs" />
     <Compile Include="Packets\Cryptography\Others\curve25519xsalsa20poly1305.cs" />
     <Compile Include="Packets\Cryptography\Others\hsalsa20.cs" />
@@ -223,11 +232,11 @@
     <Folder Include="Packets\Messages\Server\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
+  <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets'))" />
+    <Error Condition="!Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets'))" />
   </Target>
 </Project>
