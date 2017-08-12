@@ -1,4 +1,6 @@
-﻿using System.Net.Sockets;
+﻿using CR_Client.Enums;
+using CR_Client.Tools;
+using System.Net.Sockets;
 using System.Text;
 
 namespace CR_Client.Packets.Messages.Server
@@ -20,6 +22,7 @@ namespace CR_Client.Packets.Messages.Server
             {
                 _toReturn = toReturn;
             }
+            PacketDumper.Dump(Emsg.ServerHello.ToString(), receivedData);
             return _toReturn;
         }
     }

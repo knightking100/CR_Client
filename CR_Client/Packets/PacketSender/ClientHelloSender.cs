@@ -1,5 +1,6 @@
 ﻿using CR_Client.Enums;
 using CR_Client.Packets.Messages.Client;
+using CR_Client.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace CR_Client.PacketSender
         static List<byte> Packet = ClientHello.BuildPacket(Packet_ID, 1, Key_Version, Major_Version, Minor_Version, Build_Version, Hash, DeviceType, AppStore);
         public static void SendClientHello(Socket sck)
         {
+            PacketDumper.Dump(Emsg.ClientHello.ToString(), Packet.ToArray());
             sck.Send(Packet.ToArray());
         }
     }

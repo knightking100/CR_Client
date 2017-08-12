@@ -1,6 +1,7 @@
 ﻿using CR_Client.Enums;
 using CR_Client.Packets.Cryptography;
 using CR_Client.Packets.Messages.Client;
+using CR_Client.Tools;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
@@ -54,6 +55,7 @@ namespace CR_Client.PacketSender
         public static void SendClientLogin(Socket sck)
         {
             byte[] encryptedPacket = Encryptor.Encrypt(Packet);
+            PacketDumper.Dump(Emsg.ClientLogin.ToString(), encryptedPacket);
             sck.Send(encryptedPacket);
         }
     }
