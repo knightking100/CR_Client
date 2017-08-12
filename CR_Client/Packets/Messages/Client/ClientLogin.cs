@@ -4,10 +4,11 @@ namespace CR_Client.Packets.Messages.Client
 {
     public class ClientLogin
     {
-        public static List<byte> BuildPacket(long id,string token, int majorVersion, int minorVersion, int build, string resourceSha,string UDID,string openUdid,string macAddress,string device,string advertisingGuid,string osVersion,string isAndroid,string emptyString1,string androidID,string preferredDeviceLanguage,byte emptyByte1,byte preferredLanguage,string facebookAttributionId,byte advertisingEnabled,string appleIFV,int appStore,string kunlunSSO,string kunlunUID,string emptyString2,string emptyString3,byte emptyByte2)
+        public static List<byte> BuildPacket(int id_high,int id_low,string token, int majorVersion, int minorVersion, int build, string resourceSha,string UDID,string openUdid,string macAddress,string device,string advertisingGuid,string osVersion,string isAndroid,string emptyString1,string androidID,string preferredDeviceLanguage,byte emptyByte1,byte preferredLanguage,string facebookAttributionId,byte advertisingEnabled,string appleIFV,int appStore,string kunlunSSO,string kunlunUID,string emptyString2,string emptyString3,byte emptyByte2)
         {
             List<byte> Packet = new List<byte>();
-            Packet.AddLong(id);
+            Packet.AddInt(id_high);
+            Packet.AddInt(id_low);
             Packet.AddString(token);
             Packet.AddInt(majorVersion);
             Packet.AddInt(minorVersion);

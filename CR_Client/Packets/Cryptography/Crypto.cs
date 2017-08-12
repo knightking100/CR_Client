@@ -1,16 +1,25 @@
-﻿using Sodium;
+﻿using System;
 
 namespace CR_Client.Packets.Cryptography
 {
-    public class Crypto
+    public class Crypto : IDisposable
     {
-        public static byte[] Encrypt(byte[] data, byte[] nonce, byte[] privateKey, byte[] publicKey)
+        internal byte[] SNonce;
+        internal byte[] RNonce;
+        internal byte[] PublicKey;
+
+        internal Crypto()
         {
-            return PublicKeyBox.Create(data, nonce, privateKey, publicKey);
+            this.PublicKey = new byte[32];
+            this.SNonce = new byte[24];
+            this.RNonce = new byte[24];
         }
-        public static byte[] Decrypt(byte[] data, byte[] nonce, byte[] privateKey, byte[] publicKey)
+
+        void IDisposable.Dispose()
         {
-            return PublicKeyBox.Open(data, nonce, privateKey, publicKey);
+            this.SNonce = null;
+            this.RNonce = null;
+            this.PublicKey = null;
         }
     }
 }

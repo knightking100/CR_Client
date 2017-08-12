@@ -1,15 +1,13 @@
 ﻿using Sodium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Blake2Sharp;
+using CR_Client.Cryptography.Others;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CR_Client.Packets.Cryptography
 {
-    public class KeyPairGenerator
+    public class KeyGenerator
     {
-        public static KeyPair Generate()
+        public static KeyPair GenerateKeyPair()
         {
             var kp = PublicKeyBox.GenerateKeyPair();
             return kp;
