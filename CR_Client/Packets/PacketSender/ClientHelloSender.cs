@@ -24,7 +24,7 @@ namespace CR_Client.PacketSender
         static List<byte> Packet = ClientHello.BuildPacket(Packet_ID, 1, Key_Version, Major_Version, Minor_Version, Build_Version, Hash, DeviceType, AppStore);
         public static void SendClientHello(Socket sck)
         {
-            PacketDumper.Dump(Emsg.ClientHello.ToString(), Packet.ToArray());
+            //PacketDumper.DumpDecrypted(Emsg.ClientHello.ToString(), Packet.ToArray());
             sck.Send(Packet.ToArray());
         }
     }

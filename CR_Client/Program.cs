@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using CR_Client.PacketSender;
 using CR_Client.Packets.Messages.Server;
+using System.Threading;
 
 namespace CR_Client
 {

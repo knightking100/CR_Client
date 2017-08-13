@@ -140,6 +140,7 @@
     <Compile Include="Packets\Messages\MessageException.cs" />
     <Compile Include="Packets\Messages\MessageReader.cs" />
     <Compile Include="Packets\Messages\MessageWriter.cs" />
+    <Compile Include="Packets\MessageProcessor.cs" />
     <Compile Include="Packets\PacketReceiver\ServerHelloReceiver.cs" />
     <Compile Include="Packets\PacketSender\ClientLoginSender.cs" />
     <Compile Include="Packets\PacketSender\ClientHelloSender.cs" />

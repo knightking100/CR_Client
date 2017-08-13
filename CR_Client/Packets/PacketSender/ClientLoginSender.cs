@@ -1,4 +1,5 @@
 ﻿using CR_Client.Enums;
+using CR_Client.Packets;
 using CR_Client.Packets.Cryptography;
 using CR_Client.Packets.Messages.Client;
 using CR_Client.Tools;
@@ -16,8 +17,8 @@ namespace CR_Client.PacketSender
         internal const int Protocol = 1;
         internal const int Key_Version = 2;
         internal const int Major_Version = 3;
-        internal const int Minor_Version = 0;
-        internal const int Build_Version = 377;
+        internal const int Minor_Version = 377;
+        internal const int Build_Version = 1;
         internal const byte emptyByte1 = new byte();
         internal const byte emptyByte2 = new byte();
         private static byte preferredLanguage = new byte();
@@ -54,8 +55,9 @@ namespace CR_Client.PacketSender
             emptyByte2);
         public static void SendClientLogin(Socket sck)
         {
-            byte[] encryptedPacket = Encryptor.Encrypt(Packet);
-            PacketDumper.Dump(Emsg.ClientLogin.ToString(), encryptedPacket);
+            byte[] encryptedPacket = MessageProcessor.ProcessOutgoing(Packet.ToArray(),(int)Emsg.ClientLogin);
+            //PacketDumper.DumpDecrypted(Emsg.ClientLogin.ToString(), Packet.ToArray());
+            //PacketDumper.DumpEncrypted(Emsg.ClientLogin.ToString(), toEncrypt.ToArray());
             sck.Send(encryptedPacket);
         }
     }

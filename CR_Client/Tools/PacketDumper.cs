@@ -10,11 +10,39 @@ namespace CR_Client.Tools
 {
     public class PacketDumper
     {
-        public static void Dump(string packetName,byte[] data)
+        public static void DumpEncrypted(string packetName,byte[] data)
         {
-            string path = Environment.CurrentDirectory + $"/Packets/{packetName}.txt";
+            string path = Environment.CurrentDirectory;
+            string file = path + $"/Packets/Encrypted/{packetName}.txt";
+            File.SetAttributes(file, FileAttributes.Normal);
             string Data = Encoding.ASCII.GetString(data);
-            File.AppendAllText(path, Data);
+            try
+            {
+                File.AppendAllText(path, Data);
+            }
+            catch
+            {
+                Directory.CreateDirectory(path);
+                File.Create(file);
+                File.AppendAllText(path, Data);
+            }
+        }
+        public static void DumpDecrypted(string packetName, byte[] data)
+        {
+            string path = Environment.CurrentDirectory;
+            string file = path + $"/Packets/Decrypted/{packetName}.txt";
+            File.SetAttributes(file, FileAttributes.Normal);
+            string Data = Encoding.ASCII.GetString(data);
+            try
+            {
+                File.AppendAllText(path, Data);
+            }
+            catch
+            {
+                Directory.CreateDirectory(path);
+                File.Create(file);
+                File.AppendAllText(path, Data);
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace CR_Client.Packets.Messages.Server
             {
                 _toReturn = toReturn;
             }
-            PacketDumper.Dump(Emsg.ServerHello.ToString(), receivedData);
+            //PacketDumper.DumpEncrypted(Emsg.ServerHello.ToString(), receivedData);
             return _toReturn;
         }
     }
