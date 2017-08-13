@@ -1,7 +1,7 @@
-﻿using Sodium;
-using System;
+﻿using System;
 using System.Linq;
 using Blake2Sharp;
+using NaCl;
 
 namespace CR_Client.Packets.Cryptography
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blake2Sharp;
-using Sodium;
+using NaCl;
 
 namespace CR_Client.Packets.Cryptography
 {
@@ -17,7 +17,7 @@ namespace CR_Client.Packets.Cryptography
             CryptoKeys.SNonce = new byte[24];
             CryptoKeys.RNonce = new byte[24];
             CryptoKeys.PublicKey = Keys.kp.PublicKey;
-            byte[] Encrypted = SecretBox.Create(Data.ToArray(), Nonce, Keys.PublicKey);
+            //byte[] Encrypted = Crypto
             Encrypted = CryptoKeys.PublicKey.Concat(Encrypted).ToArray();
             return Encrypted;
         }
