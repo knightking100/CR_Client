@@ -12,7 +12,7 @@ namespace CR_Client.PacketSender
 {
     class ClientHelloSender
     {
-        internal const int Packet_ID = (int)Emsg.ClientHello;
+        internal const int Packet_ID = 10100;
         internal const int Protocol = 1;
         internal const int Key_Version = 11;
         internal const int Major_Version = 3;

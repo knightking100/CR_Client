@@ -34,9 +34,18 @@ namespace CR_Client
                         Console.WriteLine("Connected!");
                         ClientHelloSender.SendClientHello(sck);
                         Console.WriteLine($"Successfully sent {Emsg.ClientHello}.");
-                        Console.WriteLine($"Session key: {ServerHelloReceiver.ReceivePacket(sck)}");
-                        ClientLoginSender.SendClientLogin(sck);
-                        Console.WriteLine($"Successfully sent {Emsg.ClientLogin}.");
+                        string receivedData = ServerHelloReceiver.ReceivePacket(sck);
+                        if (receivedData.Contains(GlobalValues.SessionKeyFilter))
+                        {
+                            string sessionkey = receivedData.Replace(GlobalValues.SessionKeyFilter, "");
+                            Console.WriteLine($"Session key: {sessionkey}");
+                            ClientLoginSender.SendClientLogin(sck);
+                            Console.WriteLine($"Successfully sent {Emsg.ClientLogin}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Can't retrieve data from server.");
+                        }
                         Console.WriteLine("");
                         string consoleInput = Console.ReadLine();
                         if (consoleInput == "connect")

@@ -25,6 +25,7 @@ namespace CR_Client.PacketSender
         private static byte advertisingEnabled = new byte();
         internal const string Hash = "622384571aafa79a8453424fb4907c5f1e4268ce";
         static List<byte> Packet = ClientLogin.BuildPacket(
+            Packet_ID,
             id_high,
             id_low,
             "",
@@ -58,7 +59,8 @@ namespace CR_Client.PacketSender
             byte[] encryptedPacket = MessageProcessor.ProcessOutgoing(Packet.ToArray(),(int)Emsg.ClientLogin);
             //PacketDumper.DumpDecrypted(Emsg.ClientLogin.ToString(), Packet.ToArray());
             //PacketDumper.DumpEncrypted(Emsg.ClientLogin.ToString(), toEncrypt.ToArray());
-            sck.Send(encryptedPacket);
+            //sck.Send(encryptedPacket);
+            sck.Send(Packet.ToArray());
         }
     }
 }

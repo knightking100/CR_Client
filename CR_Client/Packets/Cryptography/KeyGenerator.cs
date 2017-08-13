@@ -1,6 +1,6 @@
-﻿using Sodium;
-using Blake2Sharp;
+﻿using Blake2Sharp;
 using CR_Client.Cryptography.Others;
+using Sodium;
 using System.Text;
 
 namespace CR_Client.Packets.Cryptography
