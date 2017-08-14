@@ -5,18 +5,19 @@ using CR_Client.Packets.Messages.Client;
 using CR_Client.Tools;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Text;
+using CR_Client.Library.TweetNaCl;
+using System.Net;
 
 namespace CR_Client.PacketSender
 {
     public class ClientLoginSender
     {
         internal const int Packet_ID = (int)Emsg.ClientLogin;
-        internal const int id_high = 0;
         internal const int id_low = 0;
         internal const int Protocol = 1;
         internal const int Key_Version = 2;
         internal const int Major_Version = 3;
+        internal const int id_high = 0;
         internal const int Minor_Version = 377;
         internal const int Build_Version = 1;
         internal const byte emptyByte1 = new byte();
@@ -25,7 +26,6 @@ namespace CR_Client.PacketSender
         private static byte advertisingEnabled = new byte();
         internal const string Hash = "622384571aafa79a8453424fb4907c5f1e4268ce";
         static List<byte> Packet = ClientLogin.BuildPacket(
-            Packet_ID,
             id_high,
             id_low,
             "",
@@ -56,11 +56,16 @@ namespace CR_Client.PacketSender
             emptyByte2);
         public static void SendClientLogin(Socket sck)
         {
-            byte[] encryptedPacket = MessageProcessor.ProcessOutgoing(Packet.ToArray(),(int)Emsg.ClientLogin);
-            //PacketDumper.DumpDecrypted(Emsg.ClientLogin.ToString(), Packet.ToArray());
-            //PacketDumper.DumpEncrypted(Emsg.ClientLogin.ToString(), toEncrypt.ToArray());
-            //sck.Send(encryptedPacket);
-            sck.Send(Packet.ToArray());
+            List<byte> NewPacket = new List<byte>();
+            NewPacket.AddString(GlobalValues.SessionKey);
+            NewPacket.AddRange(Keys.RNonceKey);
+            NewPacket.AddRange(Packet);
+            byte[] PacketToSend = new byte[NewPacket.ToArray().Length + curve25519xsalsa20poly1305.crypto_secretbox_ZEROBYTES];
+            curve25519xsalsa20poly1305.crypto_box_afternm(PacketToSend, NewPacket.ToArray(), Keys.NonceKey, Keys.ServerKey);
+            List<byte> latest = new List<byte>();
+            latest.AddUShort(10101);
+            latest.AddRange(PacketToSend);
+            GlobalValues.sck.Send(latest.ToArray());
         }
     }
 }

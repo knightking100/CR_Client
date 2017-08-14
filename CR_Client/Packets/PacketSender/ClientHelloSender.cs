@@ -4,13 +4,14 @@ using CR_Client.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CR_Client.PacketSender
 {
-    class ClientHelloSender
+    public class ClientHelloSender
     {
         internal const int Packet_ID = 10100;
         internal const int Protocol = 1;
@@ -25,7 +26,7 @@ namespace CR_Client.PacketSender
         public static void SendClientHello(Socket sck)
         {
             //PacketDumper.DumpDecrypted(Emsg.ClientHello.ToString(), Packet.ToArray());
-            sck.Send(Packet.ToArray());
+            GlobalValues.sck.Send(Packet.ToArray());
         }
     }
 }
