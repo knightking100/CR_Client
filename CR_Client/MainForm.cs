@@ -19,7 +19,7 @@ namespace CR_Client
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            IPAddress[] IP = Dns.GetHostAddresses("game.clashroyaleapp.com"); ;
+            IPAddress[] IP = Dns.GetHostAddresses("game.clashroyaleapp.com");
             string ip = "192.168.0.101";
             sck.Connect(ip, 9339);
             Console.WriteLine($"Connected IP is: {ip}");
